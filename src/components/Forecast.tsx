@@ -4,40 +4,14 @@ import { clothImage, recommendClothes } from "@/lib/cloth";
 import { formatKoreanTime, formatMonthDay } from "@/lib/utils";
 import { useWeatherViewStore } from "@/stores/weatherViewStore";
 import { ForecastItem, ForecastType } from "@/types/weather";
-import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
-type ForecastProps = { lat: string; lon: string };
-
-export default function Forecast(props: ForecastProps) {
-  const { lat, lon } = props;
-
-  const [forecast, setForecast] = useState<ForecastType>();
-
+export default function Forecast({ forecast }: { forecast: ForecastType }) {
   const { showClothing } = useWeatherViewStore();
-
-  const fetchData = async () => {
-    await axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric&lang=kr`
-      )
-      .then((res) => {
-        setForecast(res.data);
-      })
-      .catch((error) => {
-        console.error("예보 데이터 호출 오류:", error);
-      });
-  };
-
-  useEffect(() => {
-    console.log("test2");
-    fetchData();
-  }, []);
 
   return (
     <div className="px-2 py-2">
-      {forecast ? (
+      {
         <div className="p-3 rounded-lg bg-[rgba(255,255,255,0.3)]">
           <h2 className="mb-3.5">시간별 예보</h2>
 
@@ -52,7 +26,7 @@ export default function Forecast(props: ForecastProps) {
                   <ul className="flex gap-5 w-[70%]">
                     <li className="flex items-center gap-2 w-1/2">
                       <p className="shrink-0">
-                        {forecast ? (
+                        {
                           <Image
                             src={
                               showClothing
@@ -64,9 +38,7 @@ export default function Forecast(props: ForecastProps) {
                             height={30}
                             className="m-auto"
                           />
-                        ) : (
-                          <span className="inline-block w-8 h-8 bg-white/40 animate-pulse rounded-full" />
-                        )}
+                        }
                       </p>
                       <p className="text-center w-[calc(100%-30px)]">
                         <span className="block text-sm">
@@ -89,9 +61,7 @@ export default function Forecast(props: ForecastProps) {
             })}
           </ul>
         </div>
-      ) : (
-        <span className="inline-block w-full h-screen bg-white/40 animate-pulse rounded-lg" />
-      )}
+      }
     </div>
   );
 }
