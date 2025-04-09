@@ -30,7 +30,7 @@ export default function Forecast({ forecast }: { forecast: ForecastType }) {
                           <Image
                             src={
                               showClothing
-                                ? `/images/${clothImage(item.main.temp)}`
+                                ? `/images/${clothImage(Math.round(item.main.temp))}`
                                 : `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`
                             }
                             alt="날씨 이미지"
