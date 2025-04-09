@@ -21,7 +21,7 @@ export default function CurrentWeather({ currentWeather }: { currentWeather: Cur
           <Image
             src={
               showClothing
-                ? `/images/${clothImage(currentWeather.main.temp)}`
+                ? `/images/${clothImage(Math.round(currentWeather.main.temp))}`
                 : `https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`
             }
             alt="날씨 이미지"

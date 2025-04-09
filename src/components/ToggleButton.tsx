@@ -16,7 +16,11 @@ export default function ToggleButton({ temp, locationName, icon, showClothing, t
       onClick={toggleView}>
       <p>
         <Image
-          src={showClothing ? `https://openweathermap.org/img/wn/${icon}@2x.png` : `/images/${clothImage(temp)}`}
+          src={
+            showClothing
+              ? `https://openweathermap.org/img/wn/${icon}@2x.png`
+              : `/images/${clothImage(Math.round(temp))}`
+          }
           alt={showClothing ? "날씨 이미지" : "옷 이미지"}
           width={30}
           height={30}
