@@ -58,7 +58,7 @@
 
 |                                           날씨                                           |                                           옷차림                                           |
 | :--------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
-| ![날씨](https://github.com/user-attachments/assets/3c67dc16-a80e-4105-9029-df4a8e3fea12) | ![옷차림](https://github.com/user-attachments/assets/faf4c9cc-f1e0-4304-8daf-75a7b2dc0284) |
+| ![날씨](https://github.com/user-attachments/assets/5a0659c4-8a0e-4422-8d68-23ae7b2b29da) | ![옷차림](https://github.com/user-attachments/assets/c4a91d37-b31f-4721-b48a-4184d5751217) |
 
 <br>
 <br>
