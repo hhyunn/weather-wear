@@ -28,6 +28,7 @@ export default function CurrentWeather({ currentWeather }: { currentWeather: Cur
             width={80}
             height={80}
             className="m-auto"
+            priority
           />
         </p>
         <strong className="block text-5xl mb-1">{`${Math.round(currentWeather.main.temp)}º`}</strong>
