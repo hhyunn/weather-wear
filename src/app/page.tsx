@@ -2,6 +2,8 @@ import CurrentWeather from "@/components/CurrentWeather";
 import Forecast from "@/components/Forecast";
 import { fetchCurrentWeather, fetchForecast } from "./api/weather";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   // const [lat, setLat] = useState("37.485869289607");
   // const [lon, setLon] = useState("126.87860762339");
