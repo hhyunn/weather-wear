@@ -11,7 +11,8 @@ type ToggleButtonProps = {
 
 export default function ToggleButton({ temp, locationName, icon, showClothing, toggleView }: ToggleButtonProps) {
   return (
-    <button
+    <div
+      role="button"
       className="rounded-lg w-fit flex gap-1 p-1.5 text-sm items-center bg-[rgba(255,255,255,0.3)] cursor-pointer"
       onClick={toggleView}>
       <p>
@@ -31,6 +32,6 @@ export default function ToggleButton({ temp, locationName, icon, showClothing, t
         <span className="block">{showClothing ? locationName : "옷차림"}</span>
         <span className="block">{showClothing ? `${Math.round(temp)}º` : recommendClothes(Math.round(temp))}</span>
       </div>
-    </button>
+    </div>
   );
 }
