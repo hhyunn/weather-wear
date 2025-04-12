@@ -2,12 +2,14 @@
 
 import { clothImage, recommendClothes } from "@/lib/cloth";
 import { formatKoreanTime, formatMonthDay } from "@/lib/utils";
+import { useDayTimeStore } from "@/stores/useDayTimeStore";
 import { useWeatherViewStore } from "@/stores/weatherViewStore";
 import { ForecastItem, ForecastType } from "@/types/weather";
 import Image from "next/image";
 
 export default function Forecast({ forecast }: { forecast: ForecastType }) {
   const { showClothing } = useWeatherViewStore();
+  const isDay = useDayTimeStore((state) => state.isDay);
 
   return (
     <div className="px-2 py-2">
@@ -21,7 +23,9 @@ export default function Forecast({ forecast }: { forecast: ForecastType }) {
                 <li key={index} className="flex justify-between">
                   <p>
                     <span className="block">{formatKoreanTime(item.dt_txt)}</span>
-                    <span className="text-gray-500 text-sm">{formatMonthDay(item.dt_txt)}</span>
+                    <span className={`${isDay ? "text-gray-500" : "text-gray-700"} text-sm`}>
+                      {formatMonthDay(item.dt_txt)}
+                    </span>
                   </p>
                   <ul className="flex gap-5 w-[70%]">
                     <li className="flex items-center gap-2 w-1/2">
