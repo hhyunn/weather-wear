@@ -1,16 +1,10 @@
 "use client";
 
-import { isDayTime } from "@/lib/utils";
-import { useDayTimeStore } from "@/stores/useDayTimeStore";
-import { useEffect } from "react";
+type BackgroundProps = {
+  isDay: boolean;
+  children: React.ReactNode;
+};
 
-export default function Background({ children }: { children: React.ReactNode }) {
-  const { isDay, setIsDay } = useDayTimeStore();
-
-  useEffect(() => {
-    const day = isDayTime();
-    setIsDay(day);
-  }, []);
-
+export default function Background({ isDay, children }: BackgroundProps) {
   return <div className={`${isDay ? "bg-[dodgerblue]" : "bg-[midnightblue] text-white"}`}>{children}</div>;
 }

@@ -1,4 +1,5 @@
 import Background from "@/components/Background";
+import { isDayTime } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -43,10 +44,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isDay = isDayTime();
+
   return (
     <html lang="ko">
       <body className={`${pretendard.className}`}>
-        <Background>{children}</Background>
+        <Background isDay={isDay}>{children}</Background>
       </body>
     </html>
   );
