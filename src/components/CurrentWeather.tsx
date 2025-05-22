@@ -3,12 +3,14 @@
 import { fetchCurrentWeather } from "@/app/api/weather";
 import { clothImage, recommendClothes } from "@/lib/cloth";
 import { useWeatherViewStore } from "@/stores/weatherViewStore";
+import { CurrentWeatherType } from "@/types/weather";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import ToggleButton from "./ToggleButton";
 
 export default function CurrentWeather() {
-  const [currentWeather, setCurrentWeather] = useState<any>(null);
+  // const [currentWeather, setCurrentWeather] = useState<any>(null);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeatherType | null>(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (position) => {
