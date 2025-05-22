@@ -1,13 +1,28 @@
 "use client";
 
+import { fetchForecast } from "@/app/api/weather";
 import { clothImage, recommendClothes } from "@/lib/cloth";
 import { formatKoreanTime, formatMonthDay } from "@/lib/utils";
 import { useDayTimeStore } from "@/stores/useDayTimeStore";
 import { useWeatherViewStore } from "@/stores/weatherViewStore";
 import { ForecastItem, ForecastType } from "@/types/weather";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-export default function Forecast({ forecast }: { forecast: ForecastType }) {
+export default function Forecast() {
+  const [forecast, setForecast] = useState<ForecastType | null>(null);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const lat = position.coords.latitude.toString();
+      const lon = position.coords.longitude.toString();
+
+      const data = await fetchForecast(lat, lon);
+
+      setForecast(data);
+    });
+  }, []);
+
   const { showClothing } = useWeatherViewStore();
   const isDay = useDayTimeStore((state) => state.isDay);
 
